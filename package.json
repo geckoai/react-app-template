@@ -1,0 +1,44 @@
+{
+  "name": "assistant",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "react-scripts start",
+    "swagger": "react-scripts swagger-generator",
+    "build": "react-scripts build",
+    "crowdin:upload": "crowdin upload sources --auto-update --config ./crowdin.yaml",
+    "crowdin:download": "crowdin download --verbose --config ./crowdin.yaml"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@crowdin/cli": "^3.19.4",
+    "@geckoai/react-scripts": "^1.0.6",
+    "@types/crypto-js": "^4.2.2",
+    "@types/react": "^18.2.70",
+    "@types/react-dom": "^18.2.22",
+    "@types/validator": "^13.11.9",
+    "babel-plugin-import": "^1.13.3",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "prettier": "^2.6.2",
+    "web-vitals": "^2.1.4"
+  },
+  "dependencies": {
+    "@geckoai/class-transformer": "^1.0.0",
+    "@geckoai/http": "^1.0.0",
+    "@geckoai/i18n": "^1.0.0",
+    "antd": "^5.15.4",
+    "axios": "0.24.0",
+    "crypto-js": "^4.2.0",
+    "events": "^3.3.0",
+    "normalize.css": "^8.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "recoil": "^0.7.7",
+    "validator": "^13.11.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
