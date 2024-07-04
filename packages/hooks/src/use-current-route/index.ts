@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { IndexRoute, NoIndexRoute } from 'src/libs';
+import { IndexRoute, NoIndexRoute } from '@packages/router';
 import { UNSAFE_RouteContext } from 'react-router-dom';
 
 export function useCurrentRoute(): NoIndexRoute | IndexRoute {

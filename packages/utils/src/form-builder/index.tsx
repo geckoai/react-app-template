@@ -23,23 +23,16 @@ import {
   useMemo,
   useState,
 } from 'react';
-import {
-  ApiPropertyDecorate,
-  ApiPropertyMetadataImpl,
-} from '@geckoai/http';
-import {
-  Rule,
-  TypedDecorate,
-  TypeMirror,
-} from '@geckoai/class-transformer';
+import { ApiPropertyDecorate, ApiPropertyMetadataImpl } from '@geckoai/http';
+import { Rule, TypedDecorate, TypeMirror } from '@geckoai/class-transformer';
 import { FormListFieldData, FormListProps } from 'antd/es/form/FormList';
 import { LocaleLanguageKey } from '@geckoai/http/dist/types/constants';
 import { ActionFunctionArgs } from '@remix-run/router/utils';
 import { AxiosResponse } from 'axios';
-import { transformer } from 'src/utils/transformer';
-import { http } from 'src/utils/http';
+import { transformer } from '../transformer';
+import { http } from '../http';
 import { useActionData, useSubmit } from 'react-router-dom';
-import i18n from 'src/i18n';
+import i18n from '@packages/i18n';
 
 export const FormBuilderContext = createContext<BaseBuilder<any, any> | null>(
   null

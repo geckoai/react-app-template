@@ -2,6 +2,7 @@
   "name": "react-app-template",
   "version": "1.0.0",
   "description": "",
+  "private": "true",
   "scripts": {
     "start": "react-scripts start",
     "swagger": "react-scripts swagger-generator",
@@ -12,7 +13,7 @@
   "devDependencies": {
     "@ant-design/icons": "^5.3.7",
     "@crowdin/cli": "^3.19.4",
-    "@geckoai/react-scripts": "^1.0.6",
+    "@geckoai/react-scripts": "1.0.9",
     "@types/crypto-js": "^4.2.2",
     "@types/react": "^18.2.70",
     "@types/react-dom": "^18.2.22",
@@ -24,6 +25,11 @@
     "web-vitals": "^2.1.4"
   },
   "dependencies": {
+    "@packages/i18n": "workspace:*",
+    "@packages/router": "workspace:*",
+    "@packages/components": "workspace:*",
+    "@packages/hooks": "workspace:*",
+    "@packages/utils": "workspace:*",
     "@geckoai/class-transformer": "^1.0.0",
     "@geckoai/http": "^1.0.0",
     "@geckoai/i18n": "^1.0.0",

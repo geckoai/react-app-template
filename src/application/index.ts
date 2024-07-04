@@ -1,4 +1,4 @@
-import { Module } from 'src/libs';
+import { Module } from '@packages/router';
 import { Component } from './component';
 import { IndexModule } from './views/index';
 

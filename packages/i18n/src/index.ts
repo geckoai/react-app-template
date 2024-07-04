@@ -1,4 +1,4 @@
-import {I18n} from '@geckoai/i18n';
+import { I18n } from '@geckoai/i18n';
 
 import zhCN from './locales/default';
 

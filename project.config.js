@@ -76,6 +76,10 @@ module.exports = {
       // }
     }
   },
+  alias: {
+    "@packages": path.resolve('packages')
+  },
+  // CDN配置
   deployOptions: {
     packages: {
       "validator": {
@@ -159,6 +163,7 @@ module.exports = {
     useCdn: true,
     getCdnPath: (n, v, p) => `https://unpkg.com/${n}@${v}/${p}`
   },
+  // swagger生成器配置
   // swaggers: [
   //   {
   //     url: `${URI}/api/device-service/v2/api-docs`,
