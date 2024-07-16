@@ -1,14 +1,18 @@
-/// <reference types="@types/node" />
 /// <reference types="@types/react" />
 /// <reference types="@types/react-dom" />
+/// <reference types="@types/node" />
 
 declare global {
   declare namespace NodeJS {
-    interface ProcessEnv {
+    declare interface ProcessEnv {
       readonly NODE_ENV: 'development' | 'production' | 'test';
       readonly PUBLIC_URL: string;
     }
+    declare interface Process {
+      env: ProcessEnv;
+    }
   }
+  declare var process: NodeJS.Process;
 }
 
 declare module '*.avif' {
