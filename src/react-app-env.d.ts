@@ -2,18 +2,22 @@
 /// <reference types="@types/react-dom" />
 /// <reference types="@types/node" />
 
-declare global {
-  declare namespace NodeJS {
-    declare interface ProcessEnv {
-      readonly NODE_ENV: 'development' | 'production' | 'test';
-      readonly PUBLIC_URL: string;
-    }
-    declare interface Process {
-      env: ProcessEnv;
-    }
+declare namespace NodeJS {
+  declare interface ProcessEnv {
+    readonly NODE_ENV: 'development' | 'production' | 'test';
+    readonly PUBLIC_URL: string;
+    readonly HOST: string;
+    readonly PORT: string;
+    readonly WDS_SOCKET_HOST?: string;
+    readonly WDS_SOCKET_PORT?: string;
+    readonly WDS_SOCKET_PATH: string;
+    readonly APP_RUNTIME_ENV: string;
   }
-  declare var process: NodeJS.Process;
+  declare interface Process {
+    env: ProcessEnv;
+  }
 }
+declare var process: NodeJS.Process;
 
 declare module '*.avif' {
   const src: string;
