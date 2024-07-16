@@ -115,10 +115,6 @@ dist
 .DS_Store
 
 # temp create file
-public/npm/
-public/djl/
 apis/
-test/
 package-lock.json
-
-test.*
+pnpm-lock.yaml

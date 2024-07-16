@@ -22,13 +22,16 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"]
   },
   "typeAcquisition": {
     "enable": false
   },
   "include": [
-    "src"
+    "src",
+    "packages"
   ],
   "exclude": [
     "apis"

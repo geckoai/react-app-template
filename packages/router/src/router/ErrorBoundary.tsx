@@ -1,11 +1,9 @@
 import { useRouteError } from 'react-router-dom';
 import { Result } from 'antd';
-import { HttpException } from '@geckoai/http';
 
 export function ErrorBoundary() {
   const error: any = useRouteError();
-
-  if (error instanceof HttpException) {
+  if (error.isAxiosError) {
     const { data } = error.response;
     return (
       <Result status="500" title={data?.code} subTitle={data?.message}>

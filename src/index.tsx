@@ -1,36 +1,33 @@
 import 'reflect-metadata';
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'normalize.css/normalize.css';
 import { RouterFactory } from '@packages/router';
-import i18n, { I18nProvider } from '@packages/i18n';
 import * as ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { RecoilRoot, useRecoilValue } from 'recoil';
+import { RecoilRoot } from 'recoil';
 import reportWebVitals from 'src/reportWebVitals';
 import { ApplicationModule } from './application';
-import { AppStoreState } from './store';
 
 const root = document.getElementById('root');
-
 const router = RouterFactory.create(ApplicationModule);
 
-function App() {
-  const { locale } = useRecoilValue(AppStoreState);
-  useEffect(() => {
-    i18n.locale(locale);
-  }, [locale]);
-  return (
-    <I18nProvider>
-      <RouterProvider router={router} />
-    </I18nProvider>
-  );
-}
+// rem 方案代码
+// const BASE_FONT_SIZE = 12;
+// const html = document.querySelector('html');
+
+// if (html) {
+//   html.style.fontSize = BASE_FONT_SIZE / window.devicePixelRatio + 'px';
+//
+//   window.addEventListener('resize', () => {
+//     html.style.fontSize = BASE_FONT_SIZE / window.devicePixelRatio + 'px';
+//   });
+// }
 
 if (root) {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <RecoilRoot>
-        <App />
+        <RouterProvider router={router} />
       </RecoilRoot>
     </React.StrictMode>
   );

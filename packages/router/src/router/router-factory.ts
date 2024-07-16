@@ -17,7 +17,7 @@ export class RouterFactory {
           routes.push(IndexRoute.create(rest));
         } else {
           routes.push(IndexRoute.create(rest));
-          routes.push(IndexRoute.create({ ...rest, path: 'index.html' }));
+          routes.push(NoIndexRoute.create({ ...rest, path: 'index.html' }));
         }
       } else {
         const list: Array<IndexRoute | NoIndexRoute> = [];

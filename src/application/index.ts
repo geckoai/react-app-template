@@ -1,10 +1,11 @@
 import { Module } from '@packages/router';
 import { Component } from './component';
-import { IndexModule } from './views/index';
+import { LoginModule } from './views/login';
+import { AuthorizedModule } from './views/authorized';
 
 @Module({
   path: '/',
   Component,
-  children: [IndexModule],
+  children: [AuthorizedModule, LoginModule],
 })
 export class ApplicationModule {}

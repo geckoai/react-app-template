@@ -1,6 +1,7 @@
 const path = require('path');
-const IS_PROD = process.env.NODE_ENV === 'production'
-// const URI = 'http://58.33.188.228:21400'
+const IS_PROD = process.env.NODE_ENV === 'production';
+const URI = 'https://aichatdev.mingqi-tech.cn';
+// const px2rem = require('postcss-pxtorem');
 
 module.exports = {
   /**
@@ -24,9 +25,9 @@ module.exports = {
     less: {
       lessOptions: {
         modifyVars: {
-          "@primary-color": "#38A28A",
+          '@primary-color': '#38A28A'
         },
-        javascriptEnabled: true,
+        javascriptEnabled: true
       }
     },
     /**
@@ -38,7 +39,22 @@ module.exports = {
      * postcss-loader options
      * https://webpack.js.org/loaders/postcss-loader/#options
      */
-    postcss: {},
+    postcss: {
+      postcssOptions: {
+        // rem 方案代码
+        // plugins: [
+        //   px2rem({
+        //     rootValue: 12,
+        //     unitPrecision: 5,
+        //     propList: ['*'],
+        //     selectorBlackList: [],
+        //     replace: true,
+        //     mediaQuery: false,
+        //     minPixelValue: 0,
+        //   })
+        // ]
+      }
+    }
   },
   /**
    * babel-loader options
@@ -70,23 +86,23 @@ module.exports = {
     compress: true,
     port: 3012,
     proxy: {
-      // '/api': {
-      //   target: URI,
-      //   changeOrigin: true,
-      // }
+      '/api': {
+        target: URI,
+        changeOrigin: true
+      }
     }
   },
   alias: {
-    "@packages": path.resolve('packages')
+    '@packages': path.resolve('packages')
   },
   // CDN配置
   deployOptions: {
     packages: {
-      "validator": {
+      'validator': {
         scripts: {
           variableName: 'validator',
           path: IS_PROD ? 'validator.min.js' : 'validator.js',
-          cdnPath: IS_PROD ? 'validator.min.js' : 'validator.js',
+          cdnPath: IS_PROD ? 'validator.min.js' : 'validator.js'
         }
       },
       // "echarts": {
@@ -99,64 +115,64 @@ module.exports = {
       // "@ant-design/icons": {
       //   scripts: {
       //     variableName: 'icons',
-      //     path: IS_PROD ? 'index.umd.min.js' : 'index.umd.js',
-      //     cdnPath: IS_PROD ? 'dist/index.umd.min.js' : 'dist/index.umd.js',
+      //     path: IS_PROD ? 'authorized.umd.min.js' : 'authorized.umd.js',
+      //     cdnPath: IS_PROD ? 'dist/authorized.umd.min.js' : 'dist/authorized.umd.js',
       //   }
       // },
-      "axios": {
+      'axios': {
         scripts: {
           variableName: 'axios',
           path: IS_PROD ? 'axios.min.js' : 'axios.js',
-          cdnPath: IS_PROD ? 'dist/axios.min.js' : 'dist/axios.js',
+          cdnPath: IS_PROD ? 'dist/axios.min.js' : 'dist/axios.js'
         }
       },
-      "react": {
+      'react': {
         scripts: {
           variableName: 'React',
           path: IS_PROD ? 'react.production.min.js' : 'react.development.js',
-          cdnPath: IS_PROD ? 'umd/react.production.min.js' : 'umd/react.development.js',
+          cdnPath: IS_PROD ? 'umd/react.production.min.js' : 'umd/react.development.js'
         }
       },
-      "react-dom": {
+      'react-dom': {
         scripts: {
           variableName: 'ReactDOM',
           path: IS_PROD ? 'react-dom.production.min.js' : 'react-dom.development.js',
-          cdnPath: IS_PROD ? 'umd/react-dom.production.min.js' : 'umd/react-dom.development.js',
+          cdnPath: IS_PROD ? 'umd/react-dom.production.min.js' : 'umd/react-dom.development.js'
         }
       },
-      "@remix-run/router": {
+      '@remix-run/router': {
         scripts: {
           variableName: 'RemixRouter',
           path: IS_PROD ? 'router.umd.min.js' : 'router.umd.js',
-          cdnPath: IS_PROD ? 'dist/router.umd.min.js' : 'dist/router.umd.js',
+          cdnPath: IS_PROD ? 'dist/router.umd.min.js' : 'dist/router.umd.js'
         }
       },
-      "react-router": {
+      'react-router': {
         scripts: {
           variableName: 'ReactRouter',
           path: IS_PROD ? 'react-router.production.min.js' : 'react-router.development.js',
-          cdnPath: IS_PROD ? 'dist/umd/react-router.production.min.js' : 'dist/umd/react-router.development.js',
+          cdnPath: IS_PROD ? 'dist/umd/react-router.production.min.js' : 'dist/umd/react-router.development.js'
         }
       },
-      "react-router-dom": {
+      'react-router-dom': {
         scripts: {
           variableName: 'ReactRouterDOM',
           path: IS_PROD ? 'react-router-dom.production.min.js' : 'react-router-dom.development.js',
-          cdnPath: IS_PROD ? 'dist/umd/react-router-dom.production.min.js' : 'dist/umd/react-router-dom.development.js',
+          cdnPath: IS_PROD ? 'dist/umd/react-router-dom.production.min.js' : 'dist/umd/react-router-dom.development.js'
         }
       },
-      "dayjs": {
+      'dayjs': {
         scripts: {
           variableName: 'dayjs',
           path: 'dayjs.min.js',
-          cdnPath: 'dayjs.min.js',
+          cdnPath: 'dayjs.min.js'
         }
       },
-      "antd": {
+      'antd': {
         scripts: {
           variableName: 'antd',
           path: IS_PROD ? 'antd.min.js' : 'antd.js',
-          cdnPath: IS_PROD ? 'dist/antd.min.js' : 'dist/antd.js',
+          cdnPath: IS_PROD ? 'dist/antd.min.js' : 'dist/antd.js'
         }
       }
     },
@@ -164,24 +180,50 @@ module.exports = {
     getCdnPath: (n, v, p) => `https://unpkg.com/${n}@${v}/${p}`
   },
   // swagger生成器配置
-  // swaggers: [
-  //   {
-  //     url: `${URI}/api/device-service/v2/api-docs`,
-  //     outputs: [
-  //       {
-  //         dest: path.resolve('apis', 'device-service'),
-  //         dtos: [
-  //           {
-  //             path: '/equip/control/{clientId}/shutdown',
-  //             method: 'put',
-  //             name: 'EquipControlShutdownByClientId',
-  //           }
-  //         ],
-  //         vos: [
-  //           { name: 'DeviceConfigDto', target: 'DeviceConfigDto' },
-  //         ]
-  //       }
-  //     ]
-  //   },
-  // ]
-}
+  swaggers: [
+    {
+      url: `${URI}/api/auth-service/v2/api-docs`,
+      outputs: [
+        {
+          dest: path.resolve('apis', 'auth-service'),
+          dtos: [
+            {
+              path: '/auth/login',
+              method: 'post',
+              name: 'AuthLoginDto'
+            }
+            // {
+            //   path: '/user/info',
+            //   method: 'get',
+            //   name: 'UserInfoDto',
+            // }
+            // {
+            //   path: '/sms/phone/code',
+            //   method: 'get',
+            //   name: 'SMSPhoneCode',
+            // },
+            // {
+            //   path: '/behavioral/captcha/generate',
+            //   method: 'post',
+            //   name: 'BehavioralCaptchaGenerateDto',
+            // },
+            // {
+            //   path: '/behavioral/captcha/validate',
+            //   method: 'post',
+            //   name: 'BehavioralCaptchaValidateDto',
+            // }
+          ],
+          vos: [
+            // {name: 'BehaviorVerificationDto', target: "BehaviorVerificationDto" },
+            // {name: 'ImageCaptchaTrack', target: "ImageCaptchaTrack" },
+            // {name: 'Track', target: "Track" },
+            // {name: 'BehaviorCaptchaVo', target: "BehaviorCaptchaVo" },
+            // {name: 'ImageCaptchaVo', 'target': 'ImageCaptchaVO' },
+            { name: 'LoginRequestDto', target: 'LoginRequestDto' },
+            { name: 'LoginResponseVo', target: 'LoginResponseDto' }
+          ]
+        }
+      ]
+    }
+  ]
+};

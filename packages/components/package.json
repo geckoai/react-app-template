@@ -11,7 +11,8 @@
     "url": "https://github.com/geckoai/react-app-template.git"
   },
   "dependencies": {
-    "antd": "5.19.0"
+    "antd": "5.19.0",
+    "@ctrl/tinycolor": "4.1.0"
   },
   "private": true
 }

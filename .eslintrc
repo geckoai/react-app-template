@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["dist", "*.js"],
+  "ignorePatterns": ["dist", "*.js", "*.d.ts"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["prettier"],
   "extends": ["react-app"],
@@ -20,7 +20,7 @@
     "lines-between-class-members": "error",
     "react/no-children-prop": "off",
     "no-lone-blocks": "error",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "error",
     "@typescript-eslint/no-unused-vars": "off",
     "no-unused-expressions": "error",
     "no-unused-labels": "error",

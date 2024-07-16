@@ -1,7 +1,7 @@
 import { createContext, createElement, PropsWithChildren } from 'react';
 import I18n from '@geckoai/i18n';
 import { i18n } from './index';
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider, theme } from '@packages/components';
 
 const localeData = i18n.localeData();
 
@@ -15,14 +15,18 @@ export function I18nProvider(props: PropsWithChildren<{}>) {
       locale: current.ANTD,
       theme: {
         token: {
-          colorPrimary: '#38a28a',
+          colorPrimary: '#9B0011',
         },
         algorithm: [theme.compactAlgorithm],
         components: {
           Menu: {
-            itemColor: '#fff',
-            colorPrimary: '#fff',
-            fontSize: 14,
+            // itemColor: '#fff',
+            // colorPrimary: '#fff',
+            // fontSize: 18,
+          },
+          Layout: {
+            headerBg: '#9B0011',
+            siderBg: '#fff',
           },
         },
       },

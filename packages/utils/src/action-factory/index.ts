@@ -1,9 +1,9 @@
 import { ClassConstructor } from '@geckoai/class-mirror';
-import { http } from '../http';
 import { useActionData } from 'react-router-dom';
 import { AxiosResponse } from 'axios';
 import { HttpException } from '@geckoai/http';
 import { ActionFunctionArgs } from '@remix-run/router/utils';
+import { UCenterAPI } from '@packages/u-center-api';
 import { transformer } from '../transformer';
 
 abstract class Action<R extends {}> {
@@ -23,7 +23,7 @@ export class ActionFactory {
       async action({ request, params }) {
         try {
           const json = await request.json();
-          return (await http.fetch(
+          return (await UCenterAPI.fetch(
             transformer.transform(target, {
               ...params,
               ...json,

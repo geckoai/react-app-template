@@ -30,9 +30,9 @@ import { LocaleLanguageKey } from '@geckoai/http/dist/types/constants';
 import { ActionFunctionArgs } from '@remix-run/router/utils';
 import { AxiosResponse } from 'axios';
 import { transformer } from '../transformer';
-import { http } from '../http';
 import { useActionData, useSubmit } from 'react-router-dom';
 import i18n from '@packages/i18n';
+import { UCenterAPI } from '@packages/u-center-api';
 
 export const FormBuilderContext = createContext<BaseBuilder<any, any> | null>(
   null
@@ -140,7 +140,7 @@ abstract class BaseBuilder<T extends {}, P extends {} = any> {
       async action({ request, params }) {
         try {
           const json = await request.json();
-          return (await http.fetch(
+          return (await UCenterAPI.fetch(
             transformer.transform(target.type(), {
               ...params,
               ...json,
