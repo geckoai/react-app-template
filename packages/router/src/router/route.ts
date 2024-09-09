@@ -5,11 +5,16 @@ import type {
 import * as React from 'react';
 import { RouteObject } from 'react-router/dist/lib/context';
 import { ErrorBoundary } from './ErrorBoundary';
+import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon';
 
 class Route {
   public caseSensitive?: AgnosticIndexRouteObject['caseSensitive'];
 
   public path?: AgnosticIndexRouteObject['path'];
+
+  public icon?: React.ForwardRefExoticComponent<
+    Omit<AntdIconProps, 'ref'> & React.RefAttributes<HTMLSpanElement>
+  >;
 
   public id?: AgnosticIndexRouteObject['id'];
 
@@ -43,7 +48,18 @@ class Route {
 
   public title?: Record<string, any>;
 
-  public constructor(route: Route) {
+  public fullPath: string;
+
+  public alias?: string;
+
+  private getFullPath(): Array<string | undefined> {
+    if (this.parent) {
+      return [...this.parent.getFullPath(), this.path];
+    }
+    return [this.path];
+  }
+
+  public constructor(route: RouteOps, public readonly parent?: Route) {
     this.caseSensitive = route.caseSensitive;
     this.path = route.path;
     this.id = route.id;
@@ -61,12 +77,16 @@ class Route {
     this.ErrorBoundary = route.ErrorBoundary || ErrorBoundary;
     this.isHideInMenu = route.isHideInMenu;
     this.title = route.title;
+    this.icon = route.icon;
+    this.alias = route.alias;
+    this.fullPath = this.getFullPath().join('').replace(/\/+/, '/');
+    parent?.children?.push(this);
   }
 }
 
 export class IndexRoute extends Route {
-  public static create(route: Route) {
-    return new IndexRoute(route);
+  public static create(route: RouteOps, parent?: Route) {
+    return new IndexRoute(route, parent);
   }
 
   public index: true = true;
@@ -75,12 +95,12 @@ export class IndexRoute extends Route {
 }
 
 export class NoIndexRoute extends Route {
-  public static create(route: Route) {
-    return new NoIndexRoute(route);
+  public static create(route: RouteOps, parent?: Route) {
+    return new NoIndexRoute(route, parent);
   }
 
-  public constructor(route: Route) {
-    super(route);
+  public constructor(route: RouteOps, parent?: Route) {
+    super(route, parent);
     this.children = route.children;
   }
 
@@ -88,3 +108,5 @@ export class NoIndexRoute extends Route {
 
   public children?: Array<IndexRoute | NoIndexRoute>;
 }
+
+export interface RouteOps extends Omit<Route, 'fullPath'> {}

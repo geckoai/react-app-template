@@ -4,14 +4,19 @@ import {
   ClassConstructor,
 } from '@geckoai/class-mirror';
 import { IndexRoute, NoIndexRoute } from './route';
+import * as React from 'react';
+import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon';
 
 export class ModuleDecorate extends ClassDecorate<RouteImpl> {}
 
 export interface RouteImpl
-  extends Omit<NoIndexRoute | IndexRoute, 'children' | 'index'> {
-  children?: Array<ClassConstructor | NoIndexRoute | IndexRoute>;
+  extends Omit<NoIndexRoute | IndexRoute, 'children' | 'index' | 'fullPath'> {
+  children?: Array<ClassConstructor>;
   index?: boolean;
   isHideInMenu?: boolean;
+  icon?: React.ForwardRefExoticComponent<
+    Omit<AntdIconProps, 'ref'> & React.RefAttributes<HTMLSpanElement>
+  >;
   title?: Record<string, any>;
 }
 
