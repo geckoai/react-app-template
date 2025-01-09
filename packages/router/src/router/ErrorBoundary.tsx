@@ -11,8 +11,6 @@ export function ErrorBoundary() {
   const locale = useContext(I18nContext);
   const error = useRouteError() as any;
 
-  console.log(error);
-
   if (error?.constructor?.name === 'ErrorResponseImpl') {
     const { status, statusText } = error;
     return (
@@ -29,12 +27,12 @@ export function ErrorBoundary() {
             children={locale.UI.CUSTOMER_SERVICE}
             onClick={() => navigate('/', { replace: true })}
           />,
-          <Button
-            key="BACK_HOME"
-            type="primary"
-            children={locale.UI.BACK_HOME}
-            onClick={() => navigate('/', { replace: true })}
-          />,
+          // <Button
+          //   key="BACK_HOME"
+          //   type="primary"
+          //   children={locale.UI.BACK_HOME}
+          //   onClick={() => navigate('/', { replace: true })}
+          // />,
         ]}
       />
     );

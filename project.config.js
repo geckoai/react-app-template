@@ -84,7 +84,6 @@ module.exports = {
   // DevServer see: https://webpack.js.org/configuration/dev-server
   devServer: {
     compress: true,
-    port: 3012,
     proxy: {
       '/api': {
         target: URI,
