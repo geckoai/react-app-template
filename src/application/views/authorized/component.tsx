@@ -3,13 +3,12 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useCurrentRoute } from '@packages/hooks';
 
 import sty from './page.module.less';
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Menu } from 'antd';
-import { I18nContext } from '@packages/i18n';
+import { I18n } from '@packages/i18n';
 
 export const Component = () => {
   const route = useCurrentRoute();
-  const locale = useContext(I18nContext);
   const navigate = useNavigate();
 
   const routes = useMemo(() => {
@@ -30,7 +29,7 @@ export const Component = () => {
             }}
             items={routes.map((x) => ({
               key: x.path || '',
-              label: x.title?.[locale.code] || '',
+              label: x.title ? I18n.current<string>(x.title.TITLE) : x.path,
             }))}
           />
         </Layout.Sider>

@@ -3,7 +3,7 @@ import I18n from '@geckoai/i18n';
 import { i18n } from './index';
 import { ConfigProvider, theme } from '@packages/components';
 
-const localeData = i18n.localeData();
+export const localeData = i18n.localeData();
 
 export const I18nContext = createContext(localeData);
 

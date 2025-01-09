@@ -6,6 +6,9 @@ import * as React from 'react';
 import { RouteObject } from 'react-router/dist/lib/context';
 import { ErrorBoundary } from './ErrorBoundary';
 import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon';
+import { DepLocale } from '@packages/i18n';
+import { createElement } from 'react';
+import { AppConfigProvider } from '@packages/components';
 
 class Route {
   public caseSensitive?: AgnosticIndexRouteObject['caseSensitive'];
@@ -46,17 +49,22 @@ class Route {
 
   public isHideInMenu?: boolean;
 
-  public title?: Record<string, any>;
+  public title?: DepLocale<{ TITLE: string }>;
 
   public fullPath: string;
 
+  public realPath: string;
+
   public alias?: string;
 
-  private getFullPath(): Array<string | undefined> {
+  private getFullPath(alias?: boolean): Array<string | undefined> {
     if (this.parent) {
-      return [...this.parent.getFullPath(), this.path];
+      return [
+        ...this.parent.getFullPath(alias),
+        alias ? this.alias ?? this.path : this.path,
+      ];
     }
-    return [this.path];
+    return [alias ? this.alias ?? this.path : this.path];
   }
 
   public constructor(route: RouteOps, public readonly parent?: Route) {
@@ -74,12 +82,18 @@ class Route {
     this.errorElement = route.errorElement;
     this.Component = route.Component;
     this.HydrateFallback = route.HydrateFallback;
-    this.ErrorBoundary = route.ErrorBoundary || ErrorBoundary;
+    this.ErrorBoundary =
+      route.ErrorBoundary ||
+      ((props: any) =>
+        createElement(AppConfigProvider, {
+          children: createElement(ErrorBoundary, { ...props }),
+        }));
     this.isHideInMenu = route.isHideInMenu;
     this.title = route.title;
     this.icon = route.icon;
     this.alias = route.alias;
-    this.fullPath = this.getFullPath().join('').replace(/\/+/, '/');
+    this.fullPath = this.getFullPath().join('/').replace(/\/+/g, '/');
+    this.realPath = this.getFullPath(true).join('/').replace(/\/+/g, '/');
     parent?.children?.push(this);
   }
 }
@@ -109,4 +123,4 @@ export class NoIndexRoute extends Route {
   public children?: Array<IndexRoute | NoIndexRoute>;
 }
 
-export interface RouteOps extends Omit<Route, 'fullPath'> {}
+export interface RouteOps extends Omit<Route, 'fullPath' | 'realPath'> {}

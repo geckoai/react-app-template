@@ -1,6 +1,6 @@
 import { ApiProperty } from '@geckoai/http';
 import { Typed } from '@geckoai/class-transformer';
-import { i18n } from '@packages/i18n';
+import { i18n, localeData } from '@packages/i18n';
 import { I18n } from '@geckoai/i18n';
 
 export class LoginRequestDto {
@@ -35,7 +35,7 @@ export class LoginRequestDto {
   @ApiProperty({
     type: 'string',
     description: '账户密码',
-    locales: I18n.locales(i18n.localeData().PAGES.TEST.PASS_WORD),
+    locale: localeData.PAGES.TEST.PASS_WORD,
   })
   @Typed(String)
   public password: string;
@@ -56,7 +56,7 @@ export class LoginRequestDto {
   @ApiProperty({
     type: 'string',
     description: '账户名称',
-    locales: I18n.locales(i18n.localeData().PAGES.TEST.USER_NAME),
+    locale: localeData.PAGES.TEST.USER_NAME,
   })
   @Typed(String)
   public username: string;

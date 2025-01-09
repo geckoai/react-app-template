@@ -1,4 +1,9 @@
 {
   "CANCEL": "取消",
-  "SAVE": "保存"
+  "SAVE": "保存",
+  "CUSTOMER_SERVICE": "联系客服",
+  "BACK_HOME": "返回主页",
+  "LARGE": "宽松",
+  "MIDDLE": "中等",
+  "SMALL": "紧凑"
 }

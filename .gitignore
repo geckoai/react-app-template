@@ -118,3 +118,6 @@ dist
 apis/
 package-lock.json
 pnpm-lock.yaml
+
+# local env
+.env.local
